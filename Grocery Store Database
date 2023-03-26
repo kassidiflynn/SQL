@@ -1,0 +1,39 @@
+--Create a grocery store database
+
+CREATE TABLE store (id integer primary key, item TEXT, price integer, weight integer, expiration integer);
+
+--weight in ounces 
+--expiration in days
+
+INSERT INTO store VALUES
+(1, "bread", 4.99, 13.5, 7),
+(2, "olive oil", 8.99, 25.36, 730),
+(3, "rice", 3.50, 80, 730),
+(4, "flour", 2.75, 80, 180),
+(5, "brown sugar", 3.99, 24, 730),
+(6, "bottled water", 1.99, 32, 730),
+(7, "grape juice", 5.00, 64, 540),
+(8, "frozen strawberries", 8.99, 64, 180),
+(9, "eggs", 3.75, 24, 21),
+(10, "milk", 3.50, 128, 10),
+(11, "canned corn", 1.50, 15, 1095),
+(12, "beer", 15.99, 144, 365),
+(13, "sea salt", 3.50, 5, 730),
+(14, "cheese", 2.99, 16, 21),
+(15, "potatoes", 3.99, 80, 21);
+
+SELECT * FROM store ORDER BY price; 
+
+-- Top five longest shelf life items
+
+SELECT item, price, expiration
+FROM store 
+ORDER BY expiration desc
+limit 5;
+
+-- Average weight of products under 5 dollars
+
+SELECT ROUND(avg(weight)) "avg weight for under 5 dollars"
+FROM store
+where price < 5;
+
